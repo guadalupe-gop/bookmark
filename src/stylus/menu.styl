@@ -1,0 +1,30 @@
+.menu
+    display: none
+    position: absolute
+    left: 0
+    right: 0
+    top: 100%
+    background: rgba(47,53,79,.9)
+    ul
+        padding: 0
+        list-style none
+    a 
+        color: white
+        text-decoration: none
+    &-checkbox
+        display: none
+        &:checked
+            & ~ .menu-open
+                border: 1px solid purple
+            & ~ .menu
+                border: 1px solid purple
+                display: block
+
+    &-open
+        border: 1px solid red
+        user-select: none
+        width: 40px
+        height: 40px
+        display: inline-flex
+        background: url('../images/icon-hamburger.svg') no-repeat center
+        cursor: pointer
