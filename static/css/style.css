@@ -1,11 +1,15 @@
 .menu {
-  display: none;
+  visibility: hidden;
   position: absolute;
+  opacity: 0;
   left: 0;
   right: 0;
   top: 100%;
   background: rgba(47,53,79,0.9);
   height: 100vh;
+  transform: translateY(-50px);
+  transition: 0.3s transform, 0.3s opacity;
+  will-change: transform;
 }
 .menu ul {
   padding: 0;
@@ -29,21 +33,7 @@
   padding: 1em;
   letter-spacing: 2px;
 }
-.menu-checkbox {
-  display: none;
-}
-.menu-checkbox:checked ~ .menu-open {
-  border: 5px solid #800080;
-}
-.menu-checkbox:checked ~ .header {
-  background: rgba(47,53,79,0.9);
-}
-.menu-checkbox:checked ~ .header .menu {
-  border: 1px solid #800080;
-  display: block;
-}
 .menu-open {
-  border: 1px solid #f00;
   user-select: none;
   width: 40px;
   height: 40px;
@@ -51,12 +41,39 @@
   background: url("../images/icon-hamburger.svg") no-repeat center;
   cursor: pointer;
 }
+.menu-checkbox {
+  display: none;
+}
+.menu-checkbox:checked ~ .header {
+  background: rgba(47,53,79,0.9);
+}
+.menu-checkbox:checked ~ .header .menu-open {
+  background: url("../images/icon-close.svg") no-repeat center;
+}
+.menu-checkbox:checked ~ .header .header-logo {
+  background: url("../images/logo-bookmark-white.svg") no-repeat center;
+  background-size: contain;
+}
+.menu-checkbox:checked ~ .header .menu {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}
 .header {
   background: #fff;
-  position: fixed;
+  position: sticky;
+  top: 0;
   left: 0;
   right: 0;
-  padding: 2em 0;
+  padding: 1.5em 0;
+  transition: 0.3s background;
+}
+.header-logo {
+  display: inline-flex;
+  width: 150px;
+  height: 40px;
+  background: url("../images/logo-bookmark.svg") no-repeat center;
+  background-size: contain;
 }
 .header-content {
   display: flex;

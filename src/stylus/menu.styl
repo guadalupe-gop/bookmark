@@ -1,11 +1,16 @@
 .menu
-    display: none
+    // display: none
+    visibility: hidden
     position: absolute
+    opacity: 0
     left: 0
     right: 0
     top: 100%
     background: rgba(47,53,79,.9)
     height: 100vh
+    transform: translateY(-50px)
+    transition: .3s transform, .3s opacity  
+    will-change: transform 
     ul
         padding: 0
         list-style none
@@ -25,26 +30,28 @@
         text-align: center
         padding: 1em
         letter-spacing: 2px
-    
-    &-checkbox
-        display: none
-        &:checked
-            & ~ .menu-open
-                border: 5px solid purple
-            & ~ .header 
-                background: rgba(47,53,79,.9)
-                & .menu
-                    border: 1px solid purple
-                    display: block
-
-
     &-open
-        border: 1px solid red
         user-select: none
         width: 40px
         height: 40px
         display: inline-flex
         background: url('../images/icon-hamburger.svg') no-repeat center
         cursor: pointer
+    
+    &-checkbox
+        display: none
+        &:checked
+            & ~ .header 
+                background: rgba(47,53,79,.9)
+                .menu-open
+                    background: url('../images/icon-close.svg') no-repeat center
+                & .header-logo
+                    background: url('../images/logo-bookmark-white.svg') no-repeat center
+                    background-size: contain
+                & .menu
+                    transform: translateY(0)
+                    // display: block
+                    visibility: visible
+                    opacity: 1 
 
-// minuto 1:20
+// minuto 1:35
